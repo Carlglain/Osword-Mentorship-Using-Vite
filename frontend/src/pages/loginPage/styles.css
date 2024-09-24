@@ -1,0 +1,102 @@
+.container{
+    width: 200vh;
+    height: 100vh;
+    display: flex;
+}
+.regimg{
+    margin-top: 0.3rem;
+    margin-bottom: 1rem;
+    width:100%;
+    height: 98%;
+    border-radius: 5%;
+}
+/* image container */
+.icontainer{
+    width: 50%;
+    flex: 0.5;
+    margin-bottom: 10px;
+    margin-right: 17px;
+}
+/* form container */
+.fcontainer{
+    padding-left: 10%;
+    padding-top: 4%;
+    flex: 0.5;
+    width: 60%;
+    margin:5px auto 0
+}
+/* registration/ login buttons */
+.r-l-container{
+    display: flex;
+    background-color: rgba(47, 50, 125, 0.6);
+    margin: 0.7rem 0rem 5rem 3rem;
+    border-radius: 25px;
+    width:10rem;
+    padding: 10px 30px;
+   justify-content: space-between;
+    
+}
+.r-l-container button{
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    color: white;
+}
+.r-l-container button.active{
+    width: 4.5rem;
+    height: 1.5rem;
+    background-color: rgba(47, 50, 125, 0.6);
+    border-radius: 25px;
+}
+/* adding padding to the components of the form container */
+.fcontainer input{
+    margin-bottom: 20px;
+    margin-top: 5px;
+    border-radius: 25px;
+    width: 20rem;
+    height: 2rem;
+    border: 1.5px solid blue;
+    padding-left: 20px;
+}
+/* radio button style */
+#l3{
+   width: auto;
+    height: auto;
+}
+/* styling the headers in form container */
+.fcontainer h1{
+   padding-left: 2rem;
+}
+#fcontainerbutton{
+    display: flex;
+    background-color: rgba(47, 50, 125, 0.6);
+    margin: 0.4rem 0rem 3rem 12rem;
+    border-radius: 25px;
+    width:10rem;
+    padding: 10px 30px;
+    color :white;
+    justify-content: center;
+    font-size: 15px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+/* forget password link */
+.fgetpwdlink{
+    color:blue;
+    text-decoration: none;
+    margin-left: 20%;
+    
+}
+.loremtext{
+    margin-bottom: 5%;
+}
+@media (max-width: 768px) {
+    /* Styles for small devices */
+    .icontainer{
+        display: none;
+    }
+    .fcontainer{
+        margin-left: 0;
+        padding: 1%;
+        width: 100%;
+    }
+}
