@@ -3,7 +3,7 @@
     height: 100vh;
     display: flex;
 }
-.regimg{
+.registration-image{
     margin-top: 0.3rem;
     margin-bottom: 1rem;
     width:100%;
@@ -11,19 +11,19 @@
     border-radius: 5%;
 }
 /* image container */
-.icontainer{
+.image-container{
     width: 50%;
     flex: 0.5;
-    margin-bottom: 10px;
-    margin-right: 17px;
+    margin-bottom: 0.7rem;
+    margin-right: 1rem;
 }
 /* form container */
-.fcontainer{
-    padding-left: 10%;
-    padding-top: 4%;
+.form-container{
+    padding-left: 9rem;
+    padding-top: 3rem;
     flex: 0.5;
     width: 60%;
-    margin:5px auto 0
+    margin:0.5rem auto 0
 }
 /* registration/ login buttons */
 .r-l-container{
@@ -32,7 +32,7 @@
     margin: 0.7rem 0rem 5rem 3rem;
     border-radius: 25px;
     width:10rem;
-    padding: 10px 30px;
+    padding: 0.7rem 1.9rem;
    justify-content: space-between;
     
 }
@@ -49,14 +49,14 @@
     border-radius: 25px;
 }
 /* adding padding to the components of the form container */
-.fcontainer input{
-    margin-bottom: 20px;
-    margin-top: 5px;
+.form-container input{
+    margin-bottom: 1.7rem;
+    margin-top: 0.4rem;
     border-radius: 25px;
     width: 20rem;
     height: 2rem;
     border: 1.5px solid blue;
-    padding-left: 20px;
+    padding-left: 1.4rem;
 }
 /* radio button style */
 #l3{
@@ -64,23 +64,23 @@
     height: auto;
 }
 /* styling the headers in form container */
-.fcontainer h1{
+.form-container h1{
    padding-left: 2rem;
 }
-#fcontainerbutton{
+#form-container-button{
     display: flex;
     background-color: rgba(47, 50, 125, 0.6);
     margin: 0.4rem 0rem 3rem 12rem;
     border-radius: 25px;
     width:10rem;
-    padding: 10px 30px;
+    padding: 0.7rem 1.7rem;
     color :white;
     justify-content: center;
     font-size: 15px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 /* forget password link */
-.fgetpwdlink{
+.forget-password-link{
     color:blue;
     text-decoration: none;
     margin-left: 20%;
@@ -89,14 +89,33 @@
 .loremtext{
     margin-bottom: 5%;
 }
-@media (max-width: 768px) {
+@media (max-width:700px) {
     /* Styles for small devices */
-    .icontainer{
+    .image-container{
         display: none;
     }
-    .fcontainer{
+    .form-container{
         margin-left: 0;
         padding: 1%;
         width: 100%;
+    }
+}
+@media (min-width: 700px) and (max-width:1000px){
+    .image-container{
+        display: none;
+    }
+    .form-container{
+        margin:10rem 25rem;
+        padding: 1%;
+        width: 100%;
+    }
+    .forget-password-link{
+        margin-left: 10rem;
+    }
+    #form-container-button{
+        padding:  1rem 2rem;
+    }
+    .form-container input{
+        margin: 2rem 0rem;
     }
 }
