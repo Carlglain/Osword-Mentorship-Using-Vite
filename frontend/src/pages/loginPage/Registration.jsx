@@ -23,6 +23,28 @@ function Registration() {
     setIsReg(true)
     setIsLogin(false)
   }
+  const [formData,setFormData]=useState({
+    email:"",
+    username:"",
+    password:"",
+    rememberMe:false
+  })
+  const handleChange = (event)=>{
+    const {name,type,value,checked} = event.target
+    setFormData(prevData=>{
+      return {...prevData, [name]:type === 'checkbox' ?checked : value}
+    })
+  }
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    console.log(formData)
+    setFormData({
+      email:"",
+      username:"",
+      password:"",
+      rememberMe:false
+    })
+  }
   return (<div className='container'>
     <div className='image-container'>
       {isLogin? <img className='registration-image' src={Image1} alt="Lufy image display" />:
@@ -32,11 +54,12 @@ function Registration() {
     <div className='form-container'>
       <h1>Welcome to Lorem i</h1>
       <div className='r-l-container'>
+
       <button onClick={(e)=>{handleLogin(e)} } className={isLogin?'active': ''}>Login</button>
       <button onClick={(e)=>{handleRegistration(e)}} className={isReg?'active': ''} >Register</button>
       </div>
      <p className='loremtext'>Lorem ipsum dolor sit amet,adka dka dipiscing elit. Sed gfdut labore et dolore magna aliqua.</p>
-      <form >
+      <form onSubmit={(e)=>{handleSubmit(e)}} >
         {/* email rendered only when we want to create account */}
        {isReg &&
         <>
@@ -46,6 +69,8 @@ function Registration() {
         placeholder='Enter your email address'
         label="Email Address"
         type="email"
+        onChange={handleChange}
+        value={formData.email}
         />
         </>}
 
@@ -56,6 +81,8 @@ function Registration() {
        placeholder='Enter your user name'
         label="User Name"
        type="text"
+       onChange={handleChange}
+       value={formData.username}
         />
 
         {/* password */}
@@ -65,12 +92,14 @@ function Registration() {
        p placeholder='Password'
         label="Password"
        type="password"
+       onChange={handleChange}
+       value={formData.password}
         />
 
         {/* Remember me button */}
         {isLogin && 
           <>
-          <label htmlFor="l3" ><input type="checkbox"  name='r1' id='l3'/>  Remember Me</label>
+          <label htmlFor="l3" ><input type="checkbox" onChange={handleChange}  name='rememberMe' id='l3' checked={formData.rememberMe}/>  Remember Me</label>
        <a className="forget-password-link" href='#' > forgot password? </a> <br />
        </>
        }

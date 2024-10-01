@@ -1,7 +1,7 @@
 body{
   padding: 0;
   margin: 0;
-
+box-sizing: border-box;
 }
 .container{
     height: 100vh;
@@ -14,29 +14,27 @@ body{
     margin-top: 0.3rem;
     margin-bottom: 02rem;
    height: 98%;
+   width: 100%;
     border-radius: 5%;
 }
 /* image container */
 .image-container{
-    align-items: center;
+   margin: 1rem;
     flex: 0.5;
-    height: 100vh;
-    margin-bottom: 0.7rem;
-    margin-right: 1rem;
+    height: 100%;
+   
 }
 /* form container */
 .form-container{
-    padding-left: 2rem;
-    padding-top: 3rem;
+    
     flex: 0.5;
-    width: 50%;
-    margin:0.5rem auto 0
+    margin-left: 8rem;
 }
 /* registration/ login buttons */
 .r-l-container{
     display: flex;
     background-color: rgba(47, 50, 125, 0.6);
-    margin: 0.7rem 0rem 5rem 3rem;
+    margin: 0.7rem 0rem 5rem 8rem;
     border-radius: 25px;
     width:10rem;
     padding: 0.7rem 1.9rem;
@@ -60,8 +58,8 @@ body{
     margin-bottom: 1.7rem;
     margin-top: 0.4rem;
     border-radius: 25px;
-    width: 20rem;
-    height: 2rem;
+    width: 30vw;
+    height: 3rem;
     border: 1.5px solid blue;
     padding-left: 1.4rem;
 }
@@ -72,12 +70,13 @@ body{
 }
 /* styling the headers in form container */
 .form-container h1{
+  margin-left: 4rem;
    padding-left: 2rem;
 }
 #form-container-button{
     display: flex;
     background-color: rgba(47, 50, 125, 0.6);
-    margin: 0.4rem 0rem 3rem 12rem;
+    margin: 0.4rem 0rem 3rem 10rem;
     border-radius: 25px;
     width:10rem;
     padding: 0.7rem 1.7rem;
@@ -94,6 +93,7 @@ body{
     
 }
 .loremtext{
+  
     margin-bottom: 5%;
 }
 
