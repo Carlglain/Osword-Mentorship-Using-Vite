@@ -1,3 +1,8 @@
+body{
+  padding: 0;
+  margin: 0;
+
+}
 .container{
     width: 200vh;
     height: 100vh;
@@ -89,24 +94,21 @@
 .loremtext{
     margin-bottom: 5%;
 }
-@media (max-width:700px) {
-    /* Styles for small devices */
-    .image-container{
-        display: none;
-    }
-    .form-container{
-        margin-left: 0;
-        padding: 1%;
-        width: 100%;
-    }
-}
+
 @media (min-width: 700px) and (max-width:1000px){
+  .container{
+    display: flex;
+    width:100vw;
+    margin: 5px auto 0;
+    align-items: center;
+    font-size: 32px;
+  }
     .image-container{
         display: none;
     }
     .form-container{
-        margin:10rem 25rem;
-        padding: 1%;
+      flex: 1;
+        margin:5px auto 0; 
         width: 100%;
     }
     .forget-password-link{
@@ -116,6 +118,9 @@
         padding:  1rem 2rem;
     }
     .form-container input{
-        margin: 2rem 0rem;
+       width: 100vw;
     }
+
+
+
 }
