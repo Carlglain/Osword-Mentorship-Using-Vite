@@ -4,47 +4,47 @@ import Image1 from '../../Images/classroom-arms-2.avif'
 import Image2 from '../../Images/pupilraisinghand2.jpeg'
 import LabledInput from '../../Components/LabledInput'
 import Button from '../../Components/Button'
+import {Formik,Field, Form } from 'formik'
+import * as Yup from 'yup'
 function Registration() {
   const [isLogin,setIsLogin]=useState(false)
-  function handleLogin(e){
-    e.preventDefault()
-    if(isLogin){
-      return
-    }
-    setIsLogin(true)
-    setIsReg(false)
-  }
   const [isReg,setIsReg]=useState(true)
-  function handleRegistration(e){
-    e.preventDefault()
-    if(isReg){
-      return
+  const validationSchema = Yup.object({
+    email:Yup.string()
+    .email("Invalid email")
+    .when('$isReg',{
+      is: true,
+      then: Yup.string()
+      .required("Email is required")
+    }),
+    username:Yup.string()
+    .required("Username is required"),
+    password:Yup.string()
+    .min(6,'Password must be at least 6 characters')
+    .required("Password is required"),
+    rememberMe:Yup.boolean()
+  }) 
+
+
+  const handleLogin = () => {
+    if (!isLogin) {
+      setIsLogin(true);
+      setIsReg(false);
     }
-    setIsReg(true)
-    setIsLogin(false)
-  }
-  const [formData,setFormData]=useState({
-    email:"",
-    username:"",
-    password:"",
-    rememberMe:false
-  })
-  const handleChange = (event)=>{
-    const {name,type,value,checked} = event.target
-    setFormData(prevData=>{
-      return {...prevData, [name]:type === 'checkbox' ?checked : value}
-    })
-  }
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log(formData)
-    setFormData({
-      email:"",
-      username:"",
-      password:"",
-      rememberMe:false
-    })
-  }
+  };
+
+  const handleRegistration = () => {
+    if (!isReg) {
+      setIsReg(true);
+      setIsLogin(false);
+    }
+  };
+ 
+  const handleSubmit = (values, { resetForm }) => {
+    console.log(values);
+    resetForm();
+  };
+
   return (<div className='container'>
     <div className='image-container'>
       {isLogin? <img className='registration-image' src={Image1} alt="Lufy image display" />:
@@ -55,59 +55,77 @@ function Registration() {
       <h1>Welcome to Lorem i</h1>
       <div className='r-l-container'>
 
-      <button onClick={(e)=>{handleLogin(e)} } className={isLogin?'active': ''}>Login</button>
-      <button onClick={(e)=>{handleRegistration(e)}} className={isReg?'active': ''} >Register</button>
+      <button onClick={handleLogin } className={isLogin?'active': ''}>Login</button>
+      <button onClick={handleRegistration} className={isReg?'active': ''} >Register</button>
       </div>
      <p className='loremtext'>Lorem ipsum dolor sit amet,adka dka dipiscing elit. Sed gfdut labore et dolore magna aliqua.</p>
-      <form onSubmit={(e)=>{handleSubmit(e)}} >
-        {/* email rendered only when we want to create account */}
-       {isReg &&
-        <>
-        <LabledInput 
-        id="l0" 
+     <Formik
+    initialValues={{
+      email:"",
+      username:"",
+      password:"",
+      rememberMe:false,
+
+    }}
+    validationSchema={validationSchema}
+    onSubmit={handleSubmit}
+    validateOnChange={true}
+    validateOnBlur={true}
+    >
+       {({handleSubmit,isValid,dirty}) =>(
+        <Form onSubmit={handleSubmit}>
+
+{isReg &&
+        
+        <Field
+        id='l0'
         name="email" 
         placeholder='Enter your email address'
         label="Email Address"
         type="email"
-        onChange={handleChange}
-        value={formData.email}
+        
+       component={LabledInput}
         />
-        </>}
+        }
 
         {/* username */}
-        <LabledInput 
-        id="l1" 
+        <Field
+        id='l1'
         name='username'
-       placeholder='Enter your user name'
+        placeholder='Enter your user name'
         label="User Name"
-       type="text"
-       onChange={handleChange}
-       value={formData.username}
+        type="text"
+        component={LabledInput}
         />
 
         {/* password */}
-        <LabledInput 
+        <Field 
         id="l2" 
-       name='password'
-       p placeholder='Password'
+        type="password"
+        name='password'
+        placeholder='Password'
         label="Password"
-       type="password"
-       onChange={handleChange}
-       value={formData.password}
+        component={LabledInput}
+      
+       
         />
 
         {/* Remember me button */}
         {isLogin && 
-          <>
-          <label htmlFor="l3" ><input type="checkbox" onChange={handleChange}  name='rememberMe' id='l3' checked={formData.rememberMe}/>  Remember Me</label>
-       <a className="forget-password-link" href='#' > forgot password? </a> <br />
-       </>
+          <div>
+            <label ><Field type="checkbox" name='rememberMe' id='l3' />  Remember Me</label>
+            <a className="forget-password-link" href='#' > forgot password? </a> <br />
+          </div>
        }
        
-       {!isLogin || isReg ? (
-        <Button id='form-container-button' content='Register'/>) : 
-      (<Button id='form-container-button' content='Login'/>)}
-      </form>
+    
+        <Button id='form-container-button' dirty={dirty} disabled={isValid} content={isReg?'Register':'Login'}/> 
+   
+      
+        </Form>
+       )}
+    </Formik>
+     
       </div>
        </div>
   
@@ -115,3 +133,5 @@ function Registration() {
 }
 
 export default Registration
+
+

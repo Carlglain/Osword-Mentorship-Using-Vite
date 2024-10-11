@@ -1,9 +1,9 @@
 import React from 'react'
 
-function Button({id,content}) {
+function Button({id,content,disabled,dirty}) {
   return (
     <div>
-       <button id={id}>{content}</button>
+       <button type='submit' disabled={!disabled || !dirty}  id={id}>{content}</button>
     </div>
   )
 }
