@@ -113,7 +113,7 @@ function Registration() {
         {/* Remember me button */}
         {isLogin && 
           <div>
-            <label ><Field type="checkbox" name='rememberMe' id='l3' />  Remember Me</label>
+            <label ><Field type="checkbox" name='rememberMe' id='l3' /> Remember Me</label>
             <a className="forget-password-link" href='#' > forgot password? </a> <br />
           </div>
        }
